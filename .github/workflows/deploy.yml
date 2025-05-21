@@ -37,7 +37,7 @@ jobs:
           key: ${{secrets.AWS_ACCESS_PEM}}
           script: |
             echo "${{ secrets.GH_TOKEN}}" | docker login ghcr.io -u ${{secrets.GH_USERNAME}}:
-            docker pull ghcr.io/${{secret.GH_USERNAME}}/fastapi-app:latest
+            docker pull ghcr.io/${{secrets.GH_USERNAME}}/fastapi-app:latest
             docker stop fastspi.app
             docker rm fastapi-app || true
             docker run -d -p 8000:8000 --name fastapi-app ghcr.io/${{ secrets.GH_USERNAME }}/fastapi-app:latest
